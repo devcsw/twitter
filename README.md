@@ -1,191 +1,70 @@
-[summary의 사본](https://www.notion.so/e1795f7dc43d46c5b72def842d9d4c85)
+# Getting Started with Create React App
 
-### 공통 사항
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-- Model
+## Available Scripts
 
-    ```json
-    tweet = {
-      id: string,  // 트윗 아이디
-      text: string,  // 트윗 텍스트
-      createdAt: Date, // 트윗 생성 날짜
-      name: string,  // 사용자 이름
-      username: string,  // 사용자 닉네임 (아이디)
-      url: string (optional) // 사용자 프로파일 사진 URL
-    }
+In the project directory, you can run:
 
-    user = {
-       id: string; // 자동으로 설정
-       usernam: string;
-       name: string;
-       profile_url: string; // optional
-    }, 
-    ```
+### `yarn start`
 
-- 공통 Request header  (계정 관련 API 추가 후 사용 예정)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-    ```jsx
-    {
-      "x-access-token" : string  
-    }
-    ```
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-### 전체 트윗 조회
+### `yarn test`
 
-```json
-GET /tweets
-```
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- Response `200`
+### `yarn build`
 
-    ```json
-    {
-      Array<tweet>
-    }
-    ```
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- Error codes
-    - 로그인하지 않은 사용자
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-    ```json
-    Status code: 401 Unauthorized
-    ```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### 특정 유저 트윗 조회
+### `yarn eject`
 
-```json
-GET /tweets/:userId
-```
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-- Response `200`
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-    ```json
-    {
-      Array<tweet>
-    }
-    ```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-- Error codes
-    - 선택한 유저 정보 없음
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-    ```json
-    Status code: 404 Not found
-    ```
+## Learn More
 
-    - 로그인하지 않은 사용자
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-    ```json
-    Status code: 401 Unauthorized
-    ```
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-### 트윗 생성
+### Code Splitting
 
-```json
-POST /tweets
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-- Request
+### Analyzing the Bundle Size
 
-    ```json
-    {
-      user, 
-      body: string,
-    }
-    ```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-- Response `201`
+### Making a Progressive Web App
 
-    ```json
-    {
-      tweet
-    }
-    ```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-- Error codes
-    - 로그인하지 않은 사용자
+### Advanced Configuration
 
-    ```json
-    Status code: 401 Unauthorized
-    ```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### 트윗 수정
+### Deployment
 
-```json
-PUT /tweets/:id
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-- Request
+### `yarn build` fails to minify
 
-    ```json
-    { 
-      body: string
-    }
-    ```
-
-- Response `200`
-
-    ```json
-    {
-      tweet
-    }
-    ```
-
-- Error codes
-    - 선택한 트윗 정보 없음
-
-    ```json
-    Status code: 404 Not found
-    ```
-
-    - 로그인한 사용자와 트윗 작성자가 다름
-
-    ```json
-    Status code: 403 Forbidden
-    ```
-
-    - 로그인하지 않은 사용자
-
-    ```json
-    Status code: 401 Unauthorized
-    ```
-
-### 트윗 삭제
-
-```json
-DELETE /tweets/:id
-```
-
-- Response `204`
-
-    ```json
-    Status code: 204 No content
-    ```
-
-- Error codes
-    - 선택한 트윗 정보 없음
-
-    ```json
-    Status code: 404 Not found
-    ```
-
-    - 로그인한 사용자와 트윗 작성자가 다름
-
-    ```json
-    Status code: 403 Forbidden
-    ```
-
-    - 로그인하지 않은 사용자
-
-    ```json
-    Status code: 401 Unauthorized
-    ```
-
-# Account
-
-[/account/login](https://www.notion.so/account-login-d79f26b69d3e4c4183973e56d668d164)
-
-[/account/signup](https://www.notion.so/account-signup-081f3270f17c49a9983eba682db05027)
-
-[/account/logout](https://www.notion.so/account-logout-026838c1e82d48298753ae7e3b00c9df)
-
-[/account/:userId](https://www.notion.so/account-userId-f879412025d34211a80c3c53d2528b11)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
