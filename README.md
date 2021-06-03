@@ -182,4 +182,10 @@ DELETE /tweets/:id
 
 # Account
 
-[summary의 사본](https://www.notion.so/0cfbd2d102e94738babe347559024109)
+[/account/login](https://www.notion.so/account-login-d79f26b69d3e4c4183973e56d668d164)
+
+[/account/signup](https://www.notion.so/account-signup-081f3270f17c49a9983eba682db05027)
+
+[/account/logout](https://www.notion.so/account-logout-026838c1e82d48298753ae7e3b00c9df)
+
+[/account/:userId](https://www.notion.so/account-userId-f879412025d34211a80c3c53d2528b11)
