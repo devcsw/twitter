@@ -4,6 +4,9 @@ import { body } from 'express-validator';
 import * as tweetController from '../controller/tweet.js';
 import { validate } from '../middleware/validator.js';
 
+//Contract Testing: Client-Server 규격을 어떻게 맞춰가는지 테스팅기법
+//Proto Testing: 추가로 공부해볼것
+
 const router =express.Router();
 
 const validateTweet = [

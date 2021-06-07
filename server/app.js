@@ -4,7 +4,8 @@ import cors from 'cors';
 import morga from 'morgan';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import tweetsRouter from './router/tweets.js'
+import tweetsRouter from './router/tweets.js';
+import authRoter from './router/auth.js';
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(morgan('tiny'));
 
 app.use('/tweets', tweetsRouter);
+app.use('/auth', authRoter);
 
 //snippets
 app.use((req, res, next) => {
