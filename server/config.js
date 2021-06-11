@@ -1,24 +1,23 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-//개발 단계에서 키들이 있는지 확인
-function required(key, defaultValue = undefined){
-    const value = process.env[key] || defaultValue;
-    if(value == null){
-        throw new Error(`key ${key} is undefiend`);
-    }
+function required(key, defaultValue = undefined) {
+  const value = process.env[key] || defaultValue;
+  if (value == null) {
+    throw new Error(`Key ${key} is undefined`);
+  }
+  return value;
 }
 
-//정의되지 않으면 defualtValue
 export const config = {
-    jwt: {
-        secretKey: required('JWT_SECRET'),
-        expireInSec: required('JWT_EXPIRES_SEC', 86400)
-    },
-    bcrypt: {
-        saltRounds: required('BCRYPT_SALT_ROUNDS', 12)
-    },
-    host: {
-        port: required('HOST_PORT', 8080)
-    },
+  jwt: {
+    secretKey: required('JWT_SECRET'),
+    expiresInSec: parseInt(required('JWT_EXPIRES_SEC', 86400)),
+  },
+  bcrypt: {
+    saltRounds: parseInt(required('BCRYPT_SALT_ROUNDS', 12)),
+  },
+  host: {
+    port: parseInt(required('HOST_PORT', 8080)),
+  },
 };

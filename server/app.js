@@ -26,5 +26,6 @@ app.use((error, req, res, next) => {
   console.error(error);
   res.sendStatus(500);
 });
+
 const server = app.listen(config.host.port);
 initSocket(server);
